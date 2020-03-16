@@ -1,0 +1,81 @@
+<?php
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Report Language Lines
+    |--------------------------------------------------------------------------
+    |
+    | The following language lines are used in reports
+    |
+    */
+
+    'reports'=>'報告',
+    'purchase_sell_report'=>'購買和促銷',
+    'purchase_sell'=>'購買和銷售報告',
+    'purchase_sell_msg'=>'所選日期範圍的購買和銷售詳情',
+    'total_purchase'=>'總購買',
+    'purchase_inc_tax'=>'購買含稅',
+    'total_sell'=>'總銷售額',
+    'sell_inc_tax'=>'包含稅的銷售',
+    'purchase_due'=>'購買到期',
+    'sell_due'=>'銷售到期',
+    'overall'=>'整體（促銷購買）',
+    'sell_minus_purchase'=>'促銷 - 購買',
+    'difference_due'=>'到期金額',
+    'customer'=>'客戶',
+    'supplier'=>'供應商',
+    'total_due'=>'到期',
+    'contacts'=>'供應商和客戶報告',
+    'contact'=>'聯繫',
+    'stock_report'=>'庫存報告',
+    'products'=>'產品',
+    'current_stock'=>'當前庫存',
+    'total_unit_sold'=>'已售出的總單位數',
+    'tax_report'=>'稅務報告',
+    'tax_report_msg'=>'所選日期範圍的稅務詳細信息',
+    'input_tax'=>'輸入稅',
+    'output_tax'=>'輸出稅',
+    'tax_overall'=>'總體（輸入 - 輸出）',
+    'trending_products'=>'趨勢產品',
+    'apply_filters'=>'應用篩選器',
+    'filters'=>'篩選器',
+    'expense_report'=>'費用報告',
+    'total_expense'=>'總費用',
+    'others'=>'其他',
+    'all'=>'全部',
+    'top_trending_products'=>'熱門趨勢產品',
+    'all_locations'=>'所有位置',
+    'stock_adjustment_report'=>'庫存調整報告',
+    'total_stock_adjustment'=>'總庫存調整',
+    'total_recovered'=>'總回收金額',
+    'total_normal'=>'總正常',
+    'total_abnormal'=>'總異常',
+    'register_report'=>'註冊報告',
+    'open_time'=>'開放時間',
+    'close_time'=>'關閉時間',
+    'user'=>'用戶',
+    'all_users'=>'所有用戶',
+    'sales_representative'=>'銷售代表報告',
+    'sales_representative_expenses'=>'與銷售代表相關的所有費用',
+    'summary'=>'摘要',
+    'date_range'=>'日期範圍',
+    'stock_expiry_report'=>'庫存到期報告',
+    'stock_left'=>'庫存左',
+    'expired'=>'過期',
+    'view_stocks'=>'查看股票',
+    'expiring_in_1_week'=>'一周到期',
+    'expiring_in_15_days'=>'15天后到期',
+    'expiring_in_1_month'=>'一個月內過期',
+    'expiring_in_3_months'=>'過期3個月',
+    'expiring_in_6_months'=>'過期6個月',
+    'expiring_in_1_year'=>'一年到期',
+    'profit_loss'=>'盈虧報告',
+    'opening_stock'=>'開放庫存',
+    'closing_stock'=>'收盤庫存',
+    'total_expense'=>'總費用',
+    'net_profit'=>'淨利潤',
+    'total_stock_adjustment'=>'總庫存調整',
+    'total_stock_recovered'=>'總庫存恢復'
+];

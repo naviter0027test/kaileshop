@@ -1,0 +1,73 @@
+<?php
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Brand Language Lines
+    |--------------------------------------------------------------------------
+    |
+    | The following language lines are used for Brand CRUD operations.
+    |
+    */
+
+    'sale'=>'銷售/賣出',
+    'sells'=>'銷售',
+    'list_sale'=>'列出銷售',
+    'add_sale'=>'添加促銷',
+    'pos_sale'=>'POS',
+    'draft_added'=>'草稿添加成功',
+    'invoice_added'=>'發票已成功添加',
+    'item'=>'項目',
+    'total'=>'總',
+    'order_tax'=>'訂購稅',
+    'discount'=>'折扣',
+    'total_payable'=>'應付總額',
+    'cancel'=>'取消',
+    'draft'=>'草稿',
+    'finalize'=>'付款和結賬',
+    'express_finalize'=>'快速結賬',
+    'product'=>'產品',
+    'products'=>'產品',
+    'unit_price'=>'單價',
+    'qty'=>'數量',
+    'subtotal'=>'小計',
+    'recent_transactions'=>'您最近的交易',
+    'pos_sale_added'=>'銷售成功添加',
+    'price_inc_tax'=>'價格公司。稅',
+    'tax'=>'稅',
+    'edit_discount'=>'編輯折扣',
+    'edit_order_tax'=>'編輯訂單稅',
+    'discount_type'=>'折扣_類型',
+    'discount_amount'=>'折扣_金額',
+    'no_recent_transactions'=>'沒有最近_的交易',
+    'final'=>'最終',
+    'invoice_no'=>'發票編號',
+    'customer_name'=>'客戶_名稱',
+    'payment_status'=>'付款_狀態',
+    'status'=>'狀態',
+    'total_amount'=>'總_金額',
+    'total_paid'=>'付費_總額',
+    'total_remaining'=>'剩餘_總數',
+    'payment_info'=>'付款_信息',
+    'drafts'=>'草稿',
+    'all_drafts'=>'所有草稿',
+    'sell_details'=>'賣詳情',
+    'payments'=>'付款',
+    'amount'=>'金額',
+    'payment_mode'=>'付款_方式',
+    'payment_note'=>'付款_備註',
+    'sell_note'=>'賣_單',
+    'staff_note'=>'員工_備註',
+    'draft_updated'=>'草稿_已成功更新',
+    'pos_sale_updated'=>'促銷_更新_成功',
+    'location'=>'位置',
+    'add_payment_row'=>'添加_付款行',
+    'finalize_payment'=>'敲定_付款',
+    'sale_date'=>'促銷_日期',
+    'list_pos'=>'列出_POS',
+    'edit_sale'=>'編輯_促銷',
+    'shipping'=>'送貨',
+    'shipping_details'=>'送貨_明細',
+    'shipping_charges'=>'運_費'
+];
