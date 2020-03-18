@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use Modules\Superadmin\Entities\Package;
 
 use Modules\Superadmin\Entities\Subscription;
+use Modules\Superadmin\Entities\NewebPay;
 use Modules\Superadmin\Notifications\SubscriptionOfflinePaymentActivationConfirmation;
 
 use Pesapal;
@@ -255,10 +256,22 @@ class SubscriptionController extends BaseController
                 return back()->with('status', $output);
             }
         
-            //Confirm for pesapal payment gateway
-            if (isset($this->_payment_gateways()['pesapal']) && (strpos($request->merchant_reference, 'PESAPAL') !== false)) {
-                return $this->confirm_pesapal($package_id, $request);
+            if(env('NEWEB_ID') == '' || env('NEWEB_KEY') == '' || env('NEWEB_SECRET') == '') {
+                throw new \Exception('neweb not config');
             }
+            $newebPay = new NewebPay();
+            //set neweb config
+            $MerchantID = env('NEWEB_ID');
+            $HashKey = env('NEWEB_KEY');
+            $HashIV = env('NEWEB_SECRET');
+            $URL = 'https://core.spgateway.com/MPG/mpg_gateway';
+            $VER = '1.5';
+            $Order_Title = '凱悅訂閱';
+            $ReturnURL = url('/subscription');
+            $NotifyURL_atm = url('/neweb-pay-notify');
+            $ClientBackURL = url('/subscription');
+            $ATM_ExpireDate = 1;
+            $MerchantOrderNo = $newebPay->getOrderNo();
 
             DB::beginTransaction();
 
@@ -269,7 +282,7 @@ class SubscriptionController extends BaseController
 
             //Call the payment method
             $pay_function = 'pay_' . request()->gateway;
-            $payment_transaction_id = null;
+            $payment_transaction_id = $MerchantOrderNo;
             if (method_exists($this, $pay_function)) {
                 $payment_transaction_id = $this->$pay_function($business_id, $business_name, $package, $request);
             }
@@ -292,7 +305,32 @@ class SubscriptionController extends BaseController
             $output = ['success' => 0, 'msg' => $e->getMessage()];
         }
 
-        return $subscription;
+        $trade_info_arr = array(
+            'MerchantID' => $MerchantID,
+            'RespondType' => 'JSON',
+            'TimeStamp' => 1485232229,
+            'Version' => $VER,
+            'MerchantOrderNo' => $MerchantOrderNo,
+            'Amt' => (int) $subscription['package_price'],
+            'ItemDesc' => $Order_Title,
+            'ReturnURL' => $ReturnURL,
+            'NotifyURL' => $NotifyURL_atm, //notify success/failed result
+            'CustomerURL' => '', 
+            'ClientBackURL' => $ClientBackURL , //cancel to pay and return to url
+            'ExpireDate' => date("Y-m-d" , mktime(0,0,0,date("m"),date("d")+$ATM_ExpireDate,date("Y")))
+        );
+
+        /*
+        $subscription['MerchantID'] = $MerchantID;
+        $subscription['HashKey'] = $HashKey;
+        $subscription['HashIV'] = $HashIV;
+        $subscription['URL'] = $URL;
+        $subscription['VER'] = $VER;
+         */
+
+	$TradeInfo = $newebPay->create_mpg_aes_encrypt($trade_info_arr, $HashKey, $HashIV);
+	$SHA256 = strtoupper(hash("sha256", $newebPay->SHA256($HashKey,$TradeInfo,$HashIV)));
+	return $newebPay->CheckOut($URL,$MerchantID,$TradeInfo,$SHA256,$VER);
     }
 
     public function confirmNewebPayNotify(Request $request)
